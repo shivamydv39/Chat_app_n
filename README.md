@@ -1,16 +1,35 @@
-# chat_app_n
+# 💬 Chat App
 
-A new Flutter project.
+A real-time messaging app built with Flutter, supporting authentication, image sharing, and live chat features.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🔐 User authentication via Firebase Email/Password
+- 💬 Real-time chat using Cloud Firestore
+- 📷 Image sharing powered by Firebase Storage
+- 📱 Clean and responsive UI for Android, iOS, and Web
+- 🔄 Instant message updates and smooth scrolling experience
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Tools & Technologies
+
+- **Flutter** – Cross-platform UI toolkit
+- **Dart** – Programming language for Flutter
+- **Firebase Authentication** – Secure user login
+- **Cloud Firestore** – Real-time database
+- **Firebase Storage** – For media uploads
+
+---
+
+## 📦 Installation
+
+To run this project locally:
+
+```bash
+git clone https://github.com/your-username/chat-app.git
+cd chat-app
+flutter pub get
+flutter run
