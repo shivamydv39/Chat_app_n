@@ -29,7 +29,7 @@ A real-time messaging app built with Flutter, supporting authentication, image s
 To run this project locally:
 
 ```bash
-git clone https://github.com/your-username/chat-app.git
-cd chat-app
+git clone  https://github.com/shivamyadav48/Chat_app_n.git
+cd chat_app_n
 flutter pub get
 flutter run
