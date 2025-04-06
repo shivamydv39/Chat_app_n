@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "312546638794",
+    "project_id": "chat-app-8ed23",
+    "storage_bucket": "chat-app-8ed23.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312546638794:android:5c8bfa7d4db4ce9a7b6d33",
+        "android_client_info": {
+          "package_name": "com.example.chat_app_n"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhgbDXxe93_fFcj8SXO7xiq63zXc3rFLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312546638794:android:df159c6f4ece3ea47b6d33",
+        "android_client_info": {
+          "package_name": "com.shivam.chat_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhgbDXxe93_fFcj8SXO7xiq63zXc3rFLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
