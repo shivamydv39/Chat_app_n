@@ -9,28 +9,23 @@ class ChatMessages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack( // Wrap with Stack
+    return Stack(
       children: [
-        // Background Logo
         Positioned.fill(
           child: Opacity(
-            opacity: 0.1, // Adjust opacity as needed
+            opacity: 0.1,
             child: Image.asset(
-              'assets/images/chat.png', // Replace with your logo path
-              fit: BoxFit.fitWidth, // Adjust fit as needed
+              'assets/images/chat.png',
+              fit: BoxFit.fitWidth,
             ),
           ),
         ),
-
-        // Chat Messages Content
         _buildChatContent(context),
       ],
     );
   }
-
   Widget _buildChatContent(BuildContext context) {
     final authenticatedUser = FirebaseAuth.instance.currentUser!;
-
     return StreamBuilder(
       stream: FirebaseFirestore.instance
           .collection('chat')

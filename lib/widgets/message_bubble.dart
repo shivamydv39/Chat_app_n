@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-// A MessageBubble for showing a single chat message on the ChatScreen.
+
 class MessageBubble extends StatelessWidget {
-  // Create a message bubble which is meant to be the first in the sequence.
   const MessageBubble.first({
     super.key,
     required this.userImage,
@@ -11,7 +10,6 @@ class MessageBubble extends StatelessWidget {
     required this.isMe,
   }) : isFirstInSequence = true;
 
-  // Create a amessage bubble that continues the sequence.
   const MessageBubble.next({
     super.key,
     required this.message,
@@ -20,23 +18,13 @@ class MessageBubble extends StatelessWidget {
         userImage = null,
         username = null;
 
-  // Whether or not this message bubble is the first in a sequence of messages
-  // from the same user.
-  // Modifies the message bubble slightly for these different cases - only
-  // shows user image for the first message from the same user, and changes
-  // the shape of the bubble for messages thereafter.
   final bool isFirstInSequence;
-
-  // Image of the user to be displayed next to the bubble.
-  // Not required if the message is not the first in a sequence.
   final String? userImage;
 
-  // Username of the user.
-  // Not required if the message is not the first in a sequence.
   final String? username;
   final String message;
 
-  // Controls how the MessageBubble will be aligned.
+
   final bool isMe;
 
   @override
@@ -48,7 +36,6 @@ class MessageBubble extends StatelessWidget {
         if (userImage != null)
           Positioned(
             top: 15,
-            // Align user image to the right, if the message is from me.
             right: isMe ? 0 : null,
             child: CircleAvatar(
               backgroundImage: NetworkImage(
@@ -61,12 +48,12 @@ class MessageBubble extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.white.withOpacity(0.2),
+                      color: Colors.white.withAlpha(51),
                       width: 2,
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
+                        color: Colors.black.withAlpha(26),
                         spreadRadius: 1,
                         blurRadius: 5,
                         offset: const Offset(0, 3),
@@ -78,11 +65,8 @@ class MessageBubble extends StatelessWidget {
             ),
           ),
         Container(
-          // Add some margin to the edges of the messages, to allow space for the
-          // user's image.
           margin: const EdgeInsets.symmetric(horizontal: 46),
           child: Row(
-            // The side of the chat screen the message should show at.
             mainAxisAlignment:
             isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
             children: [
@@ -90,15 +74,13 @@ class MessageBubble extends StatelessWidget {
                 crossAxisAlignment:
                 isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
                 children: [
-                  // First messages in the sequence provide a visual buffer at
-                  // the top.
                   if (isFirstInSequence) const SizedBox(height: 18),
                   if (username != null)
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4), // Add padding
+                          horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        color: Colors.grey[200]?.withOpacity(0.5), // Subtle background
+                        color: Colors.grey[200]?.withAlpha(127), // Subtle background
                         borderRadius: BorderRadius.circular(8), // Rounded corners
                       ),
                       child: Text(
@@ -111,13 +93,10 @@ class MessageBubble extends StatelessWidget {
                         ),
                       ),
                     ),
-
-                  // The "speech" box surrounding the message.
                   Container(
                     decoration: BoxDecoration(
                       gradient: isMe
                           ? LinearGradient(
-                        // Gradient for user messages
                         colors: [
                           Colors.grey[200]!,
                           Colors.grey[300]!,
@@ -125,7 +104,7 @@ class MessageBubble extends StatelessWidget {
                         begin: Alignment.topRight,
                         end: Alignment.bottomLeft,
                       )
-                          : null, // No gradient for other messages
+                          : null,
                       color:
                       isMe ? null : theme.colorScheme.secondary.withAlpha(200),
                       borderRadius: BorderRadius.only(
@@ -140,27 +119,22 @@ class MessageBubble extends StatelessWidget {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
+                          color: Colors.black.withAlpha(26),
                           spreadRadius: 1,
                           blurRadius: 5,
                           offset: const Offset(0, 3), // Subtle shadow
                         ),
                       ],
                       border: Border.all(
-                        // Optional border
-                        color: Colors.grey.withOpacity(0.1),
+                        color: Colors.grey.withAlpha(26),
                         width: 0.5,
                       ),
                     ),
-                    // Set some reasonable constraints on the width of the
-                    // message bubble so it can adjust to the amount of text
-                    // it should show.
                     constraints: const BoxConstraints(maxWidth: 200),
                     padding: const EdgeInsets.symmetric(
                       vertical: 10,
                       horizontal: 14,
                     ),
-                    // Margin around the bubble.
                     margin: const EdgeInsets.symmetric(
                       vertical: 4,
                       horizontal: 12,
@@ -168,8 +142,6 @@ class MessageBubble extends StatelessWidget {
                     child: Text(
                       message,
                       style: TextStyle(
-                        // Add a little line spacing to make the text look nicer
-                        // when multilined.
                         height: 1.3,
                         color: isMe
                             ? Colors.black87

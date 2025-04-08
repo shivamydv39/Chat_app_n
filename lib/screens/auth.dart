@@ -30,7 +30,21 @@ class _AuthScreenState extends State<AuthScreen> {
     final isValid = _form.currentState!.validate();
 
     if (!isValid || !_isLogin && _selectedImage == null) {
-      // show error message ...
+      String errorMessage = '';
+
+      if (!isValid) {
+        errorMessage = 'Please fill all the required fields correctly.';
+      } else if (!_isLogin && _selectedImage == null) {
+        errorMessage = 'Please select a profile image.';
+      }
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(errorMessage),
+          backgroundColor: Colors.red,
+          duration: Duration(seconds: 2),
+        ),
+      );
       return;
     }
 
@@ -51,7 +65,6 @@ class _AuthScreenState extends State<AuthScreen> {
             .ref()
             .child('user_images')
             .child('${userCredentials.user!.uid}.jpg');
-
         await storageRef.putFile(_selectedImage!);
         final imageUrl = await storageRef.getDownloadURL();
 
@@ -65,13 +78,17 @@ class _AuthScreenState extends State<AuthScreen> {
         });
       }
     } on FirebaseAuthException catch (error) {
+      if (!mounted) return;
+
+      String errorMessage = 'Authentication failed.';
+
       if (error.code == 'email-already-in-use') {
-        // ...
+        errorMessage = 'This email address is already in use.';
       }
       ScaffoldMessenger.of(context).clearSnackBars();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(error.message ?? 'Authentication failed.'),
+          content: Text(error.message ?? errorMessage),
         ),
       );
       setState(() {
