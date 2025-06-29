@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-
 class ChatMessages extends StatelessWidget {
   const ChatMessages({super.key});
 
@@ -14,31 +13,25 @@ class ChatMessages extends StatelessWidget {
         Positioned.fill(
           child: Opacity(
             opacity: 0.1,
-            child: Image.asset(
-              'assets/images/chat.png',
-              fit: BoxFit.fitWidth,
-            ),
+            child: Image.asset('assets/images/chat.png', fit: BoxFit.fitWidth),
           ),
         ),
         _buildChatContent(context),
       ],
     );
   }
+
   Widget _buildChatContent(BuildContext context) {
     final authenticatedUser = FirebaseAuth.instance.currentUser!;
     return StreamBuilder(
-      stream: FirebaseFirestore.instance
-          .collection('chat')
-          .orderBy(
-        'createdAt',
-        descending: true,
-      )
-          .snapshots(),
+      stream:
+          FirebaseFirestore.instance
+              .collection('chat')
+              .orderBy('createdAt', descending: true)
+              .snapshots(),
       builder: (ctx, chatSnapshots) {
         if (chatSnapshots.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const Center(child: CircularProgressIndicator());
         }
 
         if (!chatSnapshots.hasData || chatSnapshots.data!.docs.isEmpty) {
@@ -46,11 +39,7 @@ class ChatMessages extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.chat_bubble_outline,
-                  size: 48,
-                  color: Colors.grey,
-                ),
+                Icon(Icons.chat_bubble_outline, size: 48, color: Colors.grey),
                 Text(
                   'Be the first to say hello!',
                   style: TextStyle(
@@ -65,30 +54,25 @@ class ChatMessages extends StatelessWidget {
           );
         }
         if (chatSnapshots.hasError) {
-          return const Center(
-            child: Text('Something went wrong...'),
-          );
+          return const Center(child: Text('Something went wrong...'));
         }
 
         final loadedMessages = chatSnapshots.data!.docs;
 
         return ListView.builder(
-          padding: const EdgeInsets.only(
-            bottom: 40,
-            left: 13,
-            right: 13,
-          ),
+          padding: const EdgeInsets.only(bottom: 40, left: 13, right: 13),
           reverse: true,
           itemCount: loadedMessages.length,
           itemBuilder: (ctx, index) {
             final chatMessage = loadedMessages[index].data();
-            final nextChatMessage = index + 1 < loadedMessages.length
-                ? loadedMessages[index + 1].data()
-                : null;
+            final nextChatMessage =
+                index + 1 < loadedMessages.length
+                    ? loadedMessages[index + 1].data()
+                    : null;
 
             final currentMessageUserId = chatMessage['userId'];
             final nextMessageUserId =
-            nextChatMessage != null ? nextChatMessage['userId'] : null;
+                nextChatMessage != null ? nextChatMessage['userId'] : null;
             final nextUserIsSame = nextMessageUserId == currentMessageUserId;
 
             if (nextUserIsSame) {
