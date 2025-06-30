@@ -17,6 +17,7 @@ class ChatMessages extends StatelessWidget {
           ),
         ),
         _buildChatContent(context),
+
       ],
     );
   }
