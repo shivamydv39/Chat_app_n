@@ -16,6 +16,7 @@ class ChatMessages extends StatelessWidget {
             child: Image.asset('assets/images/chat.png', fit: BoxFit.fitWidth),
           ),
         ),
+
         _buildChatContent(context),
 
       ],
