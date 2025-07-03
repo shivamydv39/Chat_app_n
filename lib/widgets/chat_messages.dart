@@ -12,7 +12,7 @@ class ChatMessages extends StatelessWidget {
       children: [
         Positioned.fill(
           child: Opacity(
-            opacity: 0.5,
+            opacity: 0.1,
             child: Image.asset('assets/images/chat.png', fit: BoxFit.fitWidth),
           ),
         ),
