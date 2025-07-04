@@ -29,7 +29,6 @@ class ChatMessages extends StatelessWidget {
       stream:
           FirebaseFirestore.instance
               .collection('chat')
-
               .orderBy('createdAt', descending: true)
               .snapshots(),
       builder: (ctx, chatSnapshots) {
