@@ -46,7 +46,6 @@ class ChatMessages extends StatelessWidget {
                   'Be the first to say hello!',
                   style: TextStyle(
                     fontSize: 18,
-
                     fontWeight: FontWeight.w500,
                     color: Colors.grey,
                   ),
