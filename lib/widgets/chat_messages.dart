@@ -55,7 +55,6 @@ class ChatMessages extends StatelessWidget {
             ),
           );
         }
-
         if (chatSnapshots.hasError) {
           return const Center(child: Text('Something went wrong...'));
         }
