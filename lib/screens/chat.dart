@@ -12,6 +12,7 @@ class ChatScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Chat'),
+        centerTitle: true,
         backgroundColor: Colors.cyan.shade200,
         actions: [
           IconButton(
