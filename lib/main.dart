@@ -22,7 +22,6 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'FlutterChat',
-
       theme: ThemeData().copyWith(
         colorScheme: ColorScheme.fromSeed(
             seedColor: const Color.fromARGB(255, 255, 255, 255)),
